@@ -1,5 +1,5 @@
 # atividade-de-grupo-03-11
-Projeto de um CRUD com o objetivo pedagógicos - 2º INFO A
+Projeto de um CRUD com o objetivos pedagógicos da unidade curricular Desenvolvimento de Aplicativos Móveis - SENAI Petrópolis; 05/11/2025; Turma 2º INFO: A
 
 ## Integrantes
 - Nicolas Esteves Cetano Moreira
