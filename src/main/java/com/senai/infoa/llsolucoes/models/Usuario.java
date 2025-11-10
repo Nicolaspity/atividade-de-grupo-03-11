@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "usuario")
@@ -28,12 +29,16 @@ public class Usuario {
     @Column(name = "senha")
     private String senha;
 
+    @Column(name = "data_nascimento")
+    private LocalDate data_nascimento;
+
     public Usuario(){}
-    public Usuario(String nome, String email, String contato, String senha){
+    public Usuario(String nome, String email, String contato, String senha, LocalDate data_nascimento){
         this.nome = nome;
         this.email = email;
         this.contato = contato;
         this.senha = senha;
+        this.data_nascimento = data_nascimento;
     }
 
     public void setId(Integer id){
@@ -70,6 +75,13 @@ public class Usuario {
     }
     public String getSenha(){
         return senha;
+    }
+
+    public void setDataNascimento(LocalDate date){
+        this.data_nascimento = date;
+    }
+    public LocalDate getDataNascimento(){
+        return data_nascimento;
     }
 
 }
