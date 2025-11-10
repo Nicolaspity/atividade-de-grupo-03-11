@@ -10,7 +10,7 @@ import io.swagger.v3.oas.annotations.info.Info;
     info = @Info(
         title = "L&L Soluções",
         version = "1.0",
-        description = "Loja de roupas tecnológica. Contato: @mathias.souza@aluno.senai.br"
+        description = "Loja de roupas tecnológica. Integrantes do grupo: Mathias, Nicolas, Guilherme Moraes e João Victor"
                 
     )
 )
