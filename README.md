@@ -7,7 +7,7 @@ Projeto de um CRUD com o objetivos pedagógicos da unidade curricular Desenvolvi
 - João Victor Demarchi Leite
 - Mathias Basílio Hammes de Souza
 
-## Tarefas
+## Tarefas 03-11
 -> No GitHub:
 --> Crie um repositório com todos os membros do grupo como colaboradores, inclusive eu(debysouza);
 --> Crie um projeto e atribua as tarefas para cada membro;
@@ -34,3 +34,15 @@ Projeto de um CRUD com o objetivos pedagógicos da unidade curricular Desenvolvi
 ->Finalização:
 --> Mande o link da aplicação já postada na internet para o orientador
 
+## Tarefas 10-11
+- Adicionar os seguintes endpoints:
+--> Criar model, repository, service e controller para a entidade endereço;
+----> No model deve ter logradouro, localidade, cep, número, complemento, bairro e referência;
+----> No model deve ter um mapeamento 1:N entre endereço e usuário;
+----> No controller deve ter um método GET para recuperar os dados do endereço, um método POST para salvar o endereço;
+
+----> No controller de usuário deve ter um método PUT para permitir a atualização dos dados do usuário.
+
+Antes da entrega, teste com todos os membros da equipe, depois me chame para mostrar o swagger rodando localmente.
+
+Entrega: link atualizado do Swagger após o deploy.
