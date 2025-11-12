@@ -23,8 +23,8 @@ public class EnderecoController {
     EnderecoService enderecoService;
 
     @PostMapping("salvar/endereco")
-    public ResponseEntity<Endereco> salvarEndereco(@RequestParam Integer usuario_id, @RequestParam String cep, @RequestParam Integer numero, @RequestParam String referencia) {
-        Endereco e = enderecoService.salvarEndereco(usuario_id, cep, numero, referencia);
+    public ResponseEntity<Endereco> salvarEndereco(@RequestParam String cep, @RequestParam Integer numero, @RequestParam String referencia) {
+        Endereco e = enderecoService.salvarEndereco(cep, numero, referencia);
         return ResponseEntity.ok(e);
     }
 

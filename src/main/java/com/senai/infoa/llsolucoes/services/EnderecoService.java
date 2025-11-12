@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import com.senai.infoa.llsolucoes.models.Endereco;
@@ -28,24 +29,20 @@ public class EnderecoService{
         return u.getEndereco(); 
     }
     
-    public Endereco buscarViaCep(String cep){
+    public Endereco buscarViaCep(String cep) {
         RestTemplate template = new RestTemplate();
-        Endereco endereco = template.getForObject("https://viacep.com/ws/{cep}/json", Endereco.class, cep);
-        return endereco;
+        try {
+            return template.getForObject("https://viacep.com.br/ws/{cep}/json/", Endereco.class, cep);
+        } catch (RestClientException ex) {
+            throw new RuntimeException("Erro ao consultar o ViaCEP: " + ex.getMessage());
+        }
     }
-    public Endereco salvarEndereco(Integer usuario_id, String cep, Integer numero, String referencia) {
-        Usuario u = usuarioRepository.findById(usuario_id)
-                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
+    public Endereco salvarEndereco(String cep, Integer numero, String referencia) {
         Endereco e = buscarViaCep(cep);
         e.setNumero(numero);
-        e.setReferencia(referencia);
-
-        e = enderecoRepository.save(e);
-        u.setEndereco(e);
-        usuarioRepository.save(u);
-
-        return e;
+        e.setReferencia(referencia); 
+        return enderecoRepository.save(e);
     }
 
     public void deletarTodosEnderecos(){
