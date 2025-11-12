@@ -33,9 +33,9 @@ public class EnderecoService{
         Endereco endereco = template.getForObject("https://viacep.com/ws/{cep}/json", Endereco.class, cep);
         return endereco;
     }
-    public void salvarEndereco(Integer usuario_id, String cep, Integer numero, String referencia){
-        
-        Usuario u = usuarioRepository.findById(usuario_id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+    public Endereco salvarEndereco(Integer usuario_id, String cep, Integer numero, String referencia) {
+        Usuario u = usuarioRepository.findById(usuario_id)
+                .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
         Endereco e = buscarViaCep(cep);
         e.setNumero(numero);
@@ -45,7 +45,9 @@ public class EnderecoService{
         u.setEndereco(e);
         usuarioRepository.save(u);
 
+        return e;
     }
+
     public void deletarTodosEnderecos(){
         enderecoRepository.deleteAll();
     }

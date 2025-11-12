@@ -2,6 +2,7 @@ package com.senai.infoa.llsolucoes.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,18 +22,12 @@ public class EnderecoController {
     @Autowired
     EnderecoService enderecoService;
 
-    @PostMapping("salvar/endereco") 
-    public String salvarEndereco(@RequestParam Integer usuario_id, @RequestParam String cep, @RequestParam Integer numero, @RequestParam String referencia){
-        
-        try
-        {
-            enderecoService.salvarEndereco(usuario_id, cep, numero, referencia);
-            return "Endereço salvo com sucesso";
-        } catch (Exception ex)
-        {
-            return ex.toString();
-        }
+    @PostMapping("salvar/endereco")
+    public ResponseEntity<Endereco> salvarEndereco(@RequestParam Integer usuario_id, @RequestParam String cep, @RequestParam Integer numero, @RequestParam String referencia) {
+        Endereco e = enderecoService.salvarEndereco(usuario_id, cep, numero, referencia);
+        return ResponseEntity.ok(e);
     }
+
 
     @GetMapping("buscar/endereco")
     public Endereco buscarEndereco(Integer usuario_id){
