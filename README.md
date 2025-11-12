@@ -34,7 +34,7 @@ Projeto de um CRUD com o objetivos pedagógicos da unidade curricular Desenvolvi
 ->Finalização:
 --> Mande o link da aplicação já postada na internet para o orientador
 
-## Tarefas 10-11
+## Tarefas 10-11 e 12-11
 - Adicionar os seguintes endpoints:
 --> Criar model, repository, service e controller para a entidade endereço;
 ----> No model deve ter logradouro, localidade, cep, número, complemento, bairro e referência;
