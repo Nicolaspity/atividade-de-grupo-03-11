@@ -40,10 +40,6 @@ public class Endereco {
     @Column(name = "referencia")
     private String referencia;
 
-    @OneToMany
-    @JoinColumn(name = "usuario_id")
-    private List<Usuario> usuario;
-
     public Endereco() {}
 
     public Endereco(Integer endereco_id, String logradouro, String localidade, String cep, Integer numero, String bairro, String complemento, String referencia, List<Usuario> usuario) {
@@ -55,7 +51,6 @@ public class Endereco {
         this.bairro = bairro;
         this.complemento = complemento;
         this.referencia = referencia;
-        this.usuario = usuario;
     }
 
     public Integer getEndereco_id() {
@@ -120,12 +115,5 @@ public class Endereco {
 
     public void setReferencia(String referencia) {
         this.referencia = referencia;
-    }
-
-    public void setUsuario(List<Usuario> u){
-        this.usuario = u;
-    }
-    public List<Usuario> getUsuario(){
-        return usuario;
     }
 }

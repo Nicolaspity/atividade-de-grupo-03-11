@@ -12,6 +12,7 @@ import com.senai.infoa.llsolucoes.services.UsuarioService;
 
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,5 +62,12 @@ public class UsuarioController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Esse usuário não existe");
         }
     }
+
+    @DeleteMapping("deletar/todosusuarios")
+    public String deletarTodosUsuarios(){
+        usuarioService.deletarTodosUsuarios();
+        return "Todos os usuários foram deletados";
+    }
+    
 }
 

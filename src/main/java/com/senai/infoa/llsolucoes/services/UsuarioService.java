@@ -50,4 +50,8 @@ public class UsuarioService {
 
     }
 
+    public void deletarTodosUsuarios(){
+        usuarioRepository.deleteAll();
+    }
+
 }

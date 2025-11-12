@@ -17,12 +17,15 @@ public class EnderecoService{
 
     @Autowired 
     EnderecoRepository enderecoRepository;
+    
+    @Autowired
     UsuarioRepository usuarioRepository;
 
     public Endereco getEnderecoPorUsuario(Integer usuario_id){
-        Endereco e;
-        e = enderecoRepository.findAddressByUserId(usuario_id);
-        return e;
+        Usuario u = usuarioRepository.findById(usuario_id)
+                    .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        
+        return u.getEndereco(); 
     }
     
     public Endereco buscarViaCep(String cep){
@@ -33,13 +36,18 @@ public class EnderecoService{
     public void salvarEndereco(Integer usuario_id, String cep, Integer numero, String referencia){
         
         Usuario u = usuarioRepository.findById(usuario_id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        List<Usuario> usuarios = new ArrayList<>();
-        usuarios.add(u);
-        Endereco endereco = buscarViaCep(cep);
-        endereco.setUsuario(usuarios);
-        endereco.setNumero(numero);
-        endereco.setReferencia(referencia);
-        enderecoRepository.save(endereco);
+
+        Endereco e = buscarViaCep(cep);
+        e.setNumero(numero);
+        e.setReferencia(referencia);
+
+        e = enderecoRepository.save(e);
+        u.setEndereco(e);
+        usuarioRepository.save(u);
+
+    }
+    public void deletarTodosEnderecos(){
+        enderecoRepository.deleteAll();
     }
 }
     
