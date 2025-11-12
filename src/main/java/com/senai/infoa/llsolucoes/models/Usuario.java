@@ -32,6 +32,8 @@ public class Usuario {
     @Column(name = "data_nascimento")
     private LocalDate data_nascimento;
 
+    
+
     public Usuario(){}
     public Usuario(String nome, String email, String contato, String senha, LocalDate data_nascimento){
         this.nome = nome;

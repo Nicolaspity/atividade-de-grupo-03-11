@@ -12,7 +12,9 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-
+    public Usuario buscarUsuario(Integer id){
+        return usuarioRepository.findById(id).orElse(null);
+    }
     public Usuario cadastrarUsuario(Usuario u, String confSenha){
         
         if (u.getSenha().equals(confSenha)){
@@ -34,6 +36,18 @@ public class UsuarioService {
     public Usuario getEmailPorUsuario(String email){
         Usuario u = usuarioRepository.findUserByEmail(email);
         return u;
+    }
+
+    public Usuario atualizarUsuario(Usuario u, Integer usuario_id){
+        
+        Usuario updatableUser = usuarioRepository.findById(usuario_id).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
+        updatableUser.setNome(u.getNome());
+        updatableUser.setEmail(u.getEmail());
+        updatableUser.setSenha(u.getSenha());
+        updatableUser.setContato(u.getContato());
+        updatableUser.setDataNascimento(u.getDataNascimento());
+        return usuarioRepository.save(updatableUser);
+
     }
 
 }
